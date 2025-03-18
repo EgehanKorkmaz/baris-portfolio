@@ -1,0 +1,22 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  padding: 5rem 0;
+}
+
+section:nth-child(odd) {
+  background-color: var(--color-bg-primary);
+}
+
+section:nth-child(even) {
+  background-color: var(--color-bg-secondary);
+}
+
