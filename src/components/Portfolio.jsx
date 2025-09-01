@@ -5,12 +5,14 @@ import "./Portfolio.css"
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("all")
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false)
+  const [animateInKey, setAnimateInKey] = useState(0)
 
   const projects = [
     {
       title: "Aircraft Wing Design Optimization",
       category: "engineering",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg",
       description:
         "Developed a computational model for optimizing aircraft wing designs to improve aerodynamic efficiency and reduce fuel consumption.",
       technologies: ["MATLAB", "CFD", "Optimization Algorithms"],
@@ -22,7 +24,7 @@ const Portfolio = () => {
     {
       title: "Flight Simulator Interface",
       category: "software",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg",
       description:
         "Created a user interface for a flight simulator using React, providing real-time feedback and controls for training purposes.",
       technologies: ["React", "JavaScript", "WebGL"],
@@ -34,7 +36,7 @@ const Portfolio = () => {
     {
       title: "Drone Propulsion System Analysis",
       category: "engineering",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg",
       description:
         "Analyzed and optimized propulsion systems for unmanned aerial vehicles to maximize flight time and payload capacity.",
       technologies: ["Python", "Mechanical Design", "Data Analysis"],
@@ -46,7 +48,7 @@ const Portfolio = () => {
     {
       title: "Aerospace Data Visualization Dashboard",
       category: "software",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg",
       description:
         "Developed a dashboard for visualizing aerospace test data, enabling engineers to identify patterns and anomalies quickly.",
       technologies: ["JavaScript", "D3.js", "Node.js"],
@@ -58,7 +60,7 @@ const Portfolio = () => {
     {
       title: "Composite Materials Testing",
       category: "engineering",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg",
       description:
         "Conducted tests on advanced composite materials for aircraft structures, analyzing strength-to-weight ratios and durability.",
       technologies: ["Material Science", "Structural Analysis", "Testing Methodologies"],
@@ -70,7 +72,7 @@ const Portfolio = () => {
     {
       title: "Flight Path Optimization Algorithm",
       category: "software",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg",
       description:
         "Implemented an algorithm to optimize flight paths for commercial aircraft, reducing fuel consumption and flight time.",
       technologies: ["Python", "Algorithm Design", "Geospatial Analysis"],
@@ -84,6 +86,16 @@ const Portfolio = () => {
   const filteredProjects =
     activeFilter === "all" ? projects : projects.filter((project) => project.category === activeFilter)
 
+  const handleFilterClick = (filter) => {
+    if (filter === activeFilter || isAnimatingOut) return
+    setIsAnimatingOut(true)
+    setTimeout(() => {
+      setActiveFilter(filter)
+      setIsAnimatingOut(false)
+      setAnimateInKey((k) => k + 1)
+    }, 250)
+  }
+
   return (
     <section id="portfolio" className="portfolio">
       <div className="container">
@@ -94,7 +106,7 @@ const Portfolio = () => {
           {["all", "engineering", "software"].map((filter) => (
             <button
               key={filter}
-              onClick={() => setActiveFilter(filter)}
+              onClick={() => handleFilterClick(filter)}
               className={`filter-button ${activeFilter === filter ? "active" : ""}`}
             >
               {filter}
@@ -102,12 +114,25 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="projects-grid">
+        <div className={`projects-grid ${isAnimatingOut ? "animating-out" : ""}`}>
           {filteredProjects.map((project, index) => (
-            <div key={index} className="project-card">
+            <div key={`${index}-${animateInKey}`} className={`project-card ${isAnimatingOut ? "exit" : "enter"}`}>
               <div className="project-image-container">
-                <img src={project.image || "/placeholder.svg"} alt={project.title} className="project-image" />
+                {/* Decorative image: alt cleared to avoid duplicate title visuals */}
+                <img
+                  src={project.image || "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg"}
+                  alt=""
+                  className="project-image"
+                />
                 <div className="project-links">
+                  {/* Overlay image that blurs on hover */}
+                  <img
+                    className="project-overlay-image"
+                    src={project.image || "https://www.shutterstock.com/image-vector/airplane-logo-template-elements-icon-260nw-2456195523.jpg"}
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <div className="project-overlay-tint" aria-hidden="true"></div>
                   <a
                     href={project.links.demo}
                     className="project-link"

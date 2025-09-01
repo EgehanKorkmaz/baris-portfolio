@@ -13,7 +13,7 @@ const Experience = () => {
     {
       title: "Engineering Intern",
       company: "NEREYDİ LA O",
-      period: "2022",
+      period: "2022 - 2023",
       location: "Ankara, Turkey",
       description:
         "VALLA HER GÜN GİTTİM AMA BİLMİYOM",
@@ -84,4 +84,3 @@ const Experience = () => {
 }
 
 export default Experience
-

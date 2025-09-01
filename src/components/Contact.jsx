@@ -13,7 +13,7 @@ const Contact = () => {
 
             <div className="info-items">
               <div className="info-item">
-                <div className="info-icon">
+                <a href="mailto:barisfb-17@gmail.com" className="info-icon" aria-label="Send Email">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -28,17 +28,17 @@ const Contact = () => {
                     <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                   </svg>
-                </div>
+                </a>
                 <div>
                   <h4 className="info-title">Email</h4>
-                  <a href="mailto:baris.goktas@example.com" className="info-text">
+                  <a href="mailto:barisfb-17@gmail.com" className="info-text">
                     barisfb-17@gmail.com
                     </a>
                 </div>
               </div>
 
               <div className="info-item">
-                <div className="info-icon">
+                <a href="tel:+905455101799" className="info-icon" aria-label="Call Phone">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -52,17 +52,23 @@ const Contact = () => {
                   >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
-                </div>
+                </a>
                 <div>
                   <h4 className="info-title">Phone</h4>
-                  <a href="tel:+901234567890" className="info-text">
-                  +90 545 510 17 99
+                  <a href="tel:+905455101799" className="info-text">
+                    +90 545 510 17 99
                   </a>
                 </div>
               </div>
 
               <div className="info-item">
-                <div className="info-icon">
+                <a
+                  href="https://www.google.com/maps?q=Ankara,+Turkey"
+                  className="info-icon"
+                  aria-label="Open Location in Maps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -77,10 +83,17 @@ const Contact = () => {
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
-                </div>
+                </a>
                 <div>
                   <h4 className="info-title">Location</h4>
-                  <p className="info-text">Ankara, Turkey</p>
+                  <a
+                    href="https://www.google.com/maps?q=Ankara,+Turkey"
+                    className="info-text"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ankara, Turkey
+                  </a>
                 </div>
               </div>
             </div>
@@ -88,7 +101,7 @@ const Contact = () => {
             <div className="social-links">
               <h3 className="social-heading">Connect With Me</h3>
               <div className="social-icons">
-                <a href="https://www.linkedin.com/in/bar%C4%B1%C5%9F-g%C3%B6kta%C5%9F-79a293235/" className="social-icon" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/bar%C4%B1%C5%9F-g%C3%B6kta%C5%9F-79a293235/" className="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -105,7 +118,7 @@ const Contact = () => {
                     <circle cx="4" cy="4" r="2"></circle>
                   </svg>
                 </a>
-                <a href="https://www.instagram.com/barissgoktas/" className="social-icon" aria-label="Instagram">
+                <a href="https://www.instagram.com/barissgoktas/" className="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

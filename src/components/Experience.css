@@ -2,12 +2,8 @@
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  /* Layout variables */
-  --period-area: 6rem; /* left column reserved for the period text */
-  --content-gap: 3rem; /* space between line/dot and the card */
-  --timeline-x: var(--period-area); /* center of dot/line from padding edge */
-  /* The left padding equals period column + gap so the card starts to the right */
-  padding-left: calc(var(--period-area) + var(--content-gap));
+  padding-left: 3rem; /* default spacing to accommodate line & dots */
+  --timeline-x: 1.5rem; /* single source of truth for line/dot x */
 }
 
 .timeline::before {
@@ -47,19 +43,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Big period label on the left of the line */
-.timeline-period {
-  position: absolute;
-  left: calc(var(--timeline-x) - 1.5rem); /* keep period fully to the left of the line */
-  transform: translateX(-100%);
-  top: 0;
-  color: var(--color-accent);
-  font-weight: 800;
-  font-size: 1.5rem;
-  line-height: 1;
-  white-space: nowrap;
-  text-align: right;
-}
+/* period label removed; period lives inside the card meta */
 
 .timeline-title {
   font-size: 1.25rem;
@@ -96,18 +80,12 @@
 
 @media (max-width: 768px) {
   .timeline {
-    --period-area: 4.75rem;
-    --content-gap: 2.5rem;
-    padding-left: calc(var(--period-area) + var(--content-gap));
+    padding-left: 3rem;
   }
 
   .timeline-dot {
     left: var(--timeline-x);
     transform: translateX(-50%);
-  }
-
-  .timeline-period {
-    font-size: 1.25rem;
   }
 }
 
